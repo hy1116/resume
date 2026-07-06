@@ -105,7 +105,6 @@ body {
 
 header {
     margin-bottom: 45px;
-    border-bottom: 2px solid var(--primary-color);
 }
 
 .header-top {
@@ -450,6 +449,60 @@ h2::before {
     color: var(--text-light);
 }
 
+/* Certification cards */
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+.cert-card {
+    background-color: var(--bg-body);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cert-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.05);
+    border-color: #bfdbfe;
+}
+
+/* Password gate */
+.lock-box {
+    max-width: 320px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.lock-form {
+    display: flex;
+    gap: 8px;
+}
+
+.lock-input {
+    flex: 1;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 10px 14px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    color: var(--text-main);
+}
+
+.lock-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.lock-error {
+    margin-top: 14px;
+    font-size: 13px;
+    color: #dc2626;
+}
+
 .footer-line {
     margin-top: 60px;
     padding-top: 20px;
@@ -542,6 +595,10 @@ h2::before {
 }
 
 /* Portfolio detail page */
+.detail-links {
+    margin-bottom: 40px;
+}
+
 .detail-back-link {
     display: inline-flex;
     align-items: center;
@@ -559,7 +616,7 @@ h2::before {
 
 .detail-hero-image {
     width: 100%;
-    max-height: 360px;
+    max-height: 475px;
     object-fit: cover;
     border-radius: 12px;
     margin-bottom: 32px;
@@ -621,6 +678,10 @@ h2::before {
     }
     h2::before { -webkit-print-color-adjust: exact; }
     .strength-item {
+        -webkit-print-color-adjust: exact;
+        background-color: #f8fafc !important;
+    }
+    .cert-card {
         -webkit-print-color-adjust: exact;
         background-color: #f8fafc !important;
     }
