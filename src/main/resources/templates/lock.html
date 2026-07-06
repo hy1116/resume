@@ -17,9 +17,7 @@
         <p class="intro-p" style="margin-bottom: 24px;">이 페이지는 비밀번호를 입력해야 볼 수 있습니다.</p>
         <form method="post" th:action="@{/unlock}" class="lock-form">
             <input type="hidden" name="redirect" th:value="${redirect}">
-            <label>
-                <input type="password" name="password" placeholder="비밀번호" class="lock-input" autofocus>
-            </label>
+            <input type="password" name="password" placeholder="비밀번호" class="lock-input" autofocus>
             <button type="submit" class="portfolio-link">확인</button>
         </form>
         <p th:if="${error}" class="lock-error">비밀번호가 올바르지 않습니다.</p>

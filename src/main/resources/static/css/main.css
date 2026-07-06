@@ -516,7 +516,7 @@ h2::before {
 .portfolio-row {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    margin-bottom: 38px;
 }
 
 .portfolio-card-lg {
@@ -545,11 +545,18 @@ h2::before {
 }
 
 .portfolio-card-title {
+    display: block;
     font-size: 22px;
     font-weight: 800;
     color: var(--text-bold);
     margin-bottom: 8px;
+    border-bottom: none;
+    padding-bottom: 0;
     letter-spacing: -0.02em;
+}
+
+.portfolio-card-title::before {
+    display: none;
 }
 
 .portfolio-card-desc {
@@ -568,13 +575,16 @@ h2::before {
 .portfolio-link {
     display: inline-flex;
     align-items: center;
+    font-family: inherit;
     font-size: 14px;
     font-weight: 600;
     padding: 10px 18px;
+    border: none;
     border-radius: 8px;
     text-decoration: none;
     background-color: var(--accent-color);
     color: #ffffff;
+    cursor: pointer;
     transition: background-color 0.2s;
 }
 
