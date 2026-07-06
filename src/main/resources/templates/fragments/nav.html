@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:fragment="nav(active)" class="site-nav">
+    <div class="site-nav-inner">
+        <a class="site-nav-brand" href="/">최현영</a>
+        <nav class="site-nav-links">
+            <a href="/" th:classappend="${active == 'resume'} ? 'is-active'">이력서</a>
+            <a href="/portfolio" th:classappend="${active == 'portfolio'} ? 'is-active'">포트폴리오</a>
+        </nav>
+    </div>
+</header>
+</body>
+</html>

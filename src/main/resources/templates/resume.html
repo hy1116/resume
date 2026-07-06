@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>최현영 - 이력서</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/nav :: nav(active='resume')}"></div>
+
+<div class="page-body">
+<div class="container">
+    <header>
+        <div class="header-top">
+            <div class="name-title">
+                <h1 class="name">최현영</h1>
+                <div class="title-sub">백엔드 개발자 &middot; Java / Spring &middot; 7년차</div>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-label">전화번호</span>
+                    <span>010-3546-8617</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">이메일</span>
+                    <span><a href="mailto:daiunii@naver.com">daiunii@naver.com</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">거주지</span>
+                    <span>서울시 강북구</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">생년월일</span>
+                    <span>1994.11.16</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">블로그</span>
+                    <span><a href="https://bogass.tistory.com" target="_blank">bogass.tistory.com</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">GitHub</span>
+                    <span><a href="https://github.com/hy1116" target="_blank">github.com/hy1116</a></span>
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <p class="intro-p">외부 시스템 연동과 보안&middot;운영을 고려한 백엔드 개발을 7년간 담당해 온 Java/Spring 개발자입니다. 10개 이상의 외부 API 연동, Java 17 마이그레이션 주도, 모의해킹 취약점 1,400건 개선 등 실제 운영 환경에서 검증된 경험을 바탕으로 신뢰할 수 있는 서비스를 만드는 데 집중해 왔습니다. 개발 시 정상 케이스뿐 아니라 예외 상황과 운영 중 발생할 수 있는 이슈까지 함께 고려하며, 특히 외부 연동이나 보안이 필요한 기능에서는 사소해 보이는 부분도 한 번 더 점검하는 편입니다. 이런 꼼꼼한 성향 덕분에 장애를 사전에 줄이고 안정적인 서비스 운영에 기여해 왔습니다.</p>
+        </section>
+
+        <section>
+            <div class="info-section">
+                <h2>자격증</h2>
+                <div class="info-block" style="margin-bottom: 12px;">
+                    <div class="info-title">정보처리기사</div>
+                    <div class="info-subtitle">한국산업인력공단</div>
+                    <div class="info-desc">취득년월: 2019.05</div>
+                </div>
+                <div class="info-block">
+                    <div class="info-title">SQLD (SQL 개발자)</div>
+                    <div class="info-subtitle">한국데이터베이스진흥센터</div>
+                    <div class="info-desc">취득년월: 2021.05</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="info-section">
+                <h2>학력</h2>
+                <div class="info-block">
+                    <div class="info-title">대진대학교</div>
+                    <div class="info-subtitle">컴퓨터공학과 학사 학위 취득</div>
+                    <div class="info-desc">2013.03 ~ 2018.07 &middot; 학점 3.16 / 4.5 &middot; 주간</div>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <section>
+        <h2>나만의 강점</h2>
+        <div class="strength-list">
+            <div class="strength-item">
+                <div class="strength-title">
+                    <span class="strength-num">01</span>
+                    보안과 안정성을 최우선으로 생각하는 개발자
+                </div>
+                <p class="strength-desc">모의해킹 취약점 약 1,400건을 직접 분석하고 조치한 경험을 바탕으로, 보안을 후처리가 아닌 개발 단계부터 고려합니다. Spring Security, Oauth2, JWT, MFA, Jasypt 암호화 등을 전사 서비스에 적용하며 실제 운영 환경의 보안 수준을 높여왔습니다.</p>
+            </div>
+            <div class="strength-item">
+                <div class="strength-title">
+                    <span class="strength-num">02</span>
+                    레거시를 현대화하는 마이그레이션 경험
+                </div>
+                <p class="strength-desc">Java 7 &rarr; 17 마이그레이션과 Spring Framework&middot;ORM 업그레이드를 주도하며 오래된 시스템을 안정적으로 현대화한 경험이 있습니다. 세션 기반 인증을 Spring Security + JWT 방식으로 전환하는 등 레거시 코드를 점진적으로 개선하는 작업에 강점이 있습니다.</p>
+            </div>
+            <div class="strength-item">
+                <div class="strength-title">
+                    <span class="strength-num">03</span>
+                    다양한 외부 시스템 연동 전문성
+                </div>
+                <p class="strength-desc">다우, 기프티콘, 컬쳐랜드 등 10개 이상의 외부 공급사 API 연동부터 SSO, KG통합인증, 검색엔진 연동까지 다양한 외부 시스템과의 통합 경험을 보유하고 있습니다. 각 연동마다 예외 처리와 운영 안정성을 함께 고려하여 장애 없이 서비스를 운영해왔습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>기술 스택</h2>
+        <div class="content">
+            <div class="tech-category">
+                <div class="tech-title">Language / Framework</div>
+                <div class="tech-badges">
+                    <span class="badge badge-highlight">Java</span>
+                    <span class="badge badge-highlight">Spring Framework</span>
+                    <span class="badge badge-highlight">Spring Boot</span>
+                    <span class="badge badge-highlight">Spring Security</span>
+                    <span class="badge">MyBatis</span>
+                </div>
+            </div>
+            <div class="tech-category">
+                <div class="tech-title">Server / Infra</div>
+                <div class="tech-badges">
+                    <span class="badge">Apache</span>
+                    <span class="badge">Tomcat</span>
+                    <span class="badge">Nginx</span>
+                    <span class="badge">Linux</span>
+                    <span class="badge badge-highlight">Docker</span>
+                    <span class="badge badge-highlight">Kubernetes</span>
+                    <span class="badge">Jenkins</span>
+                </div>
+            </div>
+            <div class="tech-category">
+                <div class="tech-title">Database</div>
+                <div class="tech-badges">
+                    <span class="badge">Oracle</span>
+                    <span class="badge">MySQL</span>
+                    <span class="badge">MariaDB</span>
+                    <span class="badge">Redis</span>
+                </div>
+            </div>
+            <div class="tech-category">
+                <div class="tech-title">Security / Auth</div>
+                <div class="tech-badges">
+                    <span class="badge badge-highlight">Spring Security</span>
+                    <span class="badge badge-highlight">JWT</span>
+                </div>
+            </div>
+            <div class="tech-category">
+                <div class="tech-title">Tools</div>
+                <div class="tech-badges">
+                    <span class="badge">Git</span>
+                    <span class="badge">Maven</span>
+                    <span class="badge">Gradle</span>
+                    <span class="badge">Swagger</span>
+                    <span class="badge">IntelliJ</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>경력</h2>
+        <div class="company-header">
+            <div class="company-name">비즈마켓</div>
+            <div class="company-period">2019.05 ~ 현재 (6년 8개월)</div>
+        </div>
+        <div class="company-role">백엔드 개발 선임 &middot; 쇼핑몰 및 모바일 쿠폰 서비스 백엔드 개발 및 유지보수</div>
+
+        <div class="project-list">
+            <div class="project-item">
+                <div class="project-header">
+                    <h3 class="project-title">모바일 쿠폰 시스템</h3>
+                    <div class="project-period">운영 및 고도화</div>
+                </div>
+                <ul class="project-bullets">
+                    <li>신규 쿠폰공급사 연동: 다우, 기프티콘, 컬쳐랜드 등 10건 이상의 공급사 API 연동</li>
+                    <li>쿠폰발급 API 커스텀: 쿠폰함용 API 개발 등 고객사 요구사항 추가 구현</li>
+                    <li>대량발송 속도 개선: 속도 저하 원인 분석 및 로직 최적화</li>
+                    <li>문자발송 에이전트 변경: 환경파일 설정 및 발송 쿼리 업데이트</li>
+                    <li>CMS 개선: 외부핀 일괄 취소, 예약발송 취소 API, 수신실패 내역, 발송 집계 시각화</li>
+                    <li>Java 7 &rarr; 17 마이그레이션 주도: Spring Framework&middot;ORM 업그레이드, 보안성&middot;성능 강화</li>
+                    <li>Spring Security + JWT 도입, 어드민 2FA 인증 구현으로 접근 제어 강화</li>
+                    <li>Jasypt 기반 환경파일 암호화 및 개인정보 파라미터 암/복호화 커스텀 필터 적용</li>
+                    <li>모의해킹 취약점 약 1,400건 분석&middot;조치 (토큰 검증, Referer 검증, XSS 필터링 등)</li>
+                    <li>Apache/Tomcat 기반 개발&middot;운영 서버 환경 구축 및 관리</li>
+                    <li>이미지 URL 분리: 특정 IP에서만 WAS 접근 가능하도록 보안 강화</li>
+                    <li>권한관리 기능 추가: 세션정보를 통해 접근권한을 DB로 관리하도록 개선</li>
+                    <li>nginx 신규버전 설치 및 적용: 최신 버전으로 재설치 후 기존 설정 적용하여 보안 강화</li>
+                </ul>
+                <div class="project-techs">
+                    <span class="mini-badge">Java 17</span>
+                    <span class="mini-badge">Spring Boot</span>
+                    <span class="mini-badge">Spring Security</span>
+                    <span class="mini-badge">JWT</span>
+                    <span class="mini-badge">Jasypt</span>
+                    <span class="mini-badge">Oracle</span>
+                    <span class="mini-badge">MySQL</span>
+                    <span class="mini-badge">Apache/Tomcat</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h3 class="project-title">스타드림 서비스 (KB국민카드)</h3>
+                    <div class="project-period">2020.05 ~ 2023.07</div>
+                </div>
+                <ul class="project-bullets">
+                    <li>SSO 연동 및 매월 선착순 쿠폰 발행 이벤트 로직 개발</li>
+                    <li>내부 쿠폰서비스(땡큐폰)와 연동한 쿠폰발급 프로세스 개발</li>
+                    <li>당첨자 추첨 배치 개발: 트래픽 분산을 위해 배치 로직으로 전환</li>
+                    <li>신규 쿠폰함 SSO 연동 및 개발&middot;운영 서버 Tomcat & Apache 환경 설정</li>
+                </ul>
+                <div class="project-techs">
+                    <span class="mini-badge">SSO</span>
+                    <span class="mini-badge">Spring</span>
+                    <span class="mini-badge">Batch</span>
+                    <span class="mini-badge">Oracle</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h3 class="project-title">SC제일은행 선물함</h3>
+                    <div class="project-period">2023.01 ~ 2023.03</div>
+                </div>
+                <ul class="project-bullets">
+                    <li>SSO 연동 및 고객사 요건에 맞춘 쿠폰발급 API 커스텀 개발</li>
+                    <li>모바일 쿠폰 발급 시 LMS 안내 자동 발송 기능 추가</li>
+                    <li>개발&middot;운영 서버 Tomcat & Apache 환경 설정</li>
+                </ul>
+                <div class="project-techs">
+                    <span class="mini-badge">Spring</span>
+                    <span class="mini-badge">SSO</span>
+                    <span class="mini-badge">LMS</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h3 class="project-title">페이북 쇼핑</h3>
+                    <div class="project-period">2020.05 ~ 2020.07</div>
+                </div>
+                <ul class="project-bullets">
+                    <li>마이페이지 개발: 주문내역, 배송지관리, Q&A 등 기능 개발</li>
+                    <li>메인 템플릿 개발: 운영자가 관리 가능한 추가 메인영역</li>
+                    <li>검색엔진 연동: 자동완성, 인기검색어, 검색결과</li>
+                    <li>취약점 처리: 약 1,400건의 보안 취약점 처리</li>
+                </ul>
+                <div class="project-techs">
+                    <span class="mini-badge">Spring</span>
+                    <span class="mini-badge">Oracle</span>
+                    <span class="mini-badge">검색엔진</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h3 class="project-title">우리원마켓</h3>
+                    <div class="project-period">2021.06</div>
+                </div>
+                <ul class="project-bullets">
+                    <li>임직원 전용관 및 전용관 템플릿 관리기능 개발</li>
+                    <li>메인페이지 템플릿 작업 (스크립트 및 데이터 매핑)</li>
+                    <li>임직원 인증 기능 추가 (메일을 통한 인증번호 발급)</li>
+                </ul>
+                <div class="project-techs">
+                    <span class="mini-badge">Spring</span>
+                    <span class="mini-badge">Oracle</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h3 class="project-title">S-OIL</h3>
+                    <div class="project-period">2022.10 ~ 2022.11</div>
+                </div>
+                <ul class="project-bullets">
+                    <li>주문&middot;상품 관련 통계 시각화 페이지 개발 (Chart.js 사용)</li>
+                    <li>모의해킹 취약점 개선: 토큰 검증, Referer 검증, XSS 필터링, Jasypt 암호화 적용</li>
+                </ul>
+                <div class="project-techs">
+                    <span class="mini-badge">Spring</span>
+                    <span class="mini-badge">Jasypt</span>
+                    <span class="mini-badge">Chart.js</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h3 class="project-title">로레알몰</h3>
+                    <div class="project-period">2023.12 ~ 2024.02</div>
+                </div>
+                <ul class="project-bullets">
+                    <li>KG 통합인증 연동: 본인인증, 간편가입, 간편로그인 기능 구현</li>
+                </ul>
+                <div class="project-techs">
+                    <span class="mini-badge">Spring</span>
+                    <span class="mini-badge">KG 인증</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h3 class="project-title">꿈꾸는 모바일</h3>
+                    <div class="project-period">2022.01 ~ 2022.04</div>
+                </div>
+                <ul class="project-bullets">
+                    <li>Knockout.js 를 통한 메인 개편</li>
+                    <li>타사 암호화 모듈 적용을 위한 AOP 적용</li>
+                </ul>
+                <div class="project-techs">
+                    <span class="mini-badge">Spring</span>
+                    <span class="mini-badge">Knockout.js</span>
+                    <span class="mini-badge">AOP</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h3 class="project-title">BI 상품통계 시스템</h3>
+                    <div class="project-period">2025.10 ~ 2026.01</div>
+                </div>
+                <ul class="project-bullets">
+                    <li>기존 세션 로그인 방식 제거 후 Spring Security + JWT 전환</li>
+                    <li>Spring Boot 설정 개선 및 REST API 설계&middot;개발</li>
+                </ul>
+                <div class="project-techs">
+                    <span class="mini-badge">Spring Boot</span>
+                    <span class="mini-badge">JWT</span>
+                    <span class="mini-badge">Spring Security</span>
+                    <span class="mini-badge">REST API</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h3 class="project-title">스마트 팩토링 시스템</h3>
+                    <div class="project-period">2026.03 ~ 2026.04</div>
+                </div>
+                <ul class="project-bullets">
+                    <li>사용자 중심 DB 설계</li>
+                    <li>한국전자인증(PKI) 모듈을 연동하여 공인인증서 기반의 로그인 및 전자서명 기능 구현</li>
+                    <li>Spring Security 적용</li>
+                </ul>
+                <div class="project-techs">
+                    <span class="mini-badge">Spring Security</span>
+                    <span class="mini-badge">PKI</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer-line">
+        &copy; 2026 Choi Hyunyoung. Resume Page.
+    </div>
+</div>
+</div>
+
+</body>
+</html>
