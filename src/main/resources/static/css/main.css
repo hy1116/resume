@@ -173,7 +173,7 @@ header {
     color: var(--text-main);
     font-weight: 400;
     word-break: keep-all;
-    text-align: justify;
+    text-align: center;
 }
 
 section {
@@ -473,6 +473,7 @@ h2::before {
 /* Password gate */
 .lock-box {
     max-width: 320px;
+    width: 100%;
     margin: 40px auto;
     text-align: center;
 }
@@ -484,6 +485,7 @@ h2::before {
 
 .lock-input {
     flex: 1;
+    min-width: 0;
     font-family: inherit;
     font-size: 14px;
     padding: 10px 14px;
@@ -731,5 +733,8 @@ h2::before {
         bottom: 16px;
         padding: 10px 16px;
         font-size: 13px;
+    }
+    .lock-form {
+        flex-direction: column;
     }
 }
