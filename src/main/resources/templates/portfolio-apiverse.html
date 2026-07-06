@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>최현영 - APIverse</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/nav :: nav(active='portfolio')}"></div>
+
+<div class="page-body">
+<div class="container">
+    <a class="detail-back-link" href="/portfolio">&larr; 포트폴리오 목록으로</a>
+
+    <img class="detail-hero-image" th:src="@{/images/apiverse-sample.jpg}" alt="APIverse 미리보기">
+
+    <div class="detail-title">APIverse</div>
+    <p class="detail-tagline">가입 즉시 샌드박스 키가 발급되는 Developer-First API 마켓플레이스 &amp; 게이트웨이</p>
+    <div class="portfolio-card-links" style="margin-bottom: 40px;">
+        <a class="portfolio-link" href="https://apiverse.hypepia.com" target="_blank" rel="noopener">사이트 바로가기 ↗</a>
+        <a class="portfolio-link portfolio-link-secondary" href="https://github.com/hy1116/apiverse" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+
+    <section>
+        <h2>주요 기능</h2>
+        <ul class="project-bullets">
+            <li>1-Click 샌드박스: 가입 즉시 테스트용 API Key 자동 발급, 신용카드/승인 대기 없음</li>
+            <li>API 상세 페이지 내 Swagger UI 임베드 &mdash; 로그인 유저의 키가 자동 세팅되어 바로 호출 테스트</li>
+            <li>Curl/Java/JavaScript/Python/Go 코드 스니펫 즉시 복사 제공</li>
+            <li>WebSocket 기반 실시간 요청/응답 트래픽 모니터링</li>
+            <li>무료 나눔 API &rarr; 등급별(Basic/Pro/Enterprise) 유료 구독 상품까지 아우르는 하이브리드 과금 모델</li>
+            <li>API 상품 등록 &rarr; 관리자 승인(approve) 플로우, 관리자 전용 어드민 콘솔 분리</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>기술 스택</h2>
+        <div class="content">
+            <div class="tech-category">
+                <div class="tech-title">Gateway (Backend)</div>
+                <div class="tech-badges">
+                    <span class="badge badge-highlight">Java 17</span>
+                    <span class="badge badge-highlight">Spring Boot</span>
+                    <span class="badge badge-highlight">Spring WebFlux</span>
+                    <span class="badge">R2DBC</span>
+                    <span class="badge">Spring Security (Reactive)</span>
+                    <span class="badge">JWT</span>
+                </div>
+            </div>
+            <div class="tech-category">
+                <div class="tech-title">Storage / Caching</div>
+                <div class="tech-badges">
+                    <span class="badge">PostgreSQL</span>
+                    <span class="badge badge-highlight">Redis</span>
+                    <span class="badge">Kafka (Phase 2)</span>
+                </div>
+            </div>
+            <div class="tech-category">
+                <div class="tech-title">Frontend</div>
+                <div class="tech-badges">
+                    <span class="badge">React 18</span>
+                    <span class="badge">Vite</span>
+                    <span class="badge">Tailwind CSS</span>
+                </div>
+            </div>
+            <div class="tech-category">
+                <div class="tech-title">Infra</div>
+                <div class="tech-badges">
+                    <span class="badge">Docker</span>
+                    <span class="badge">Kubernetes (k3s)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>아키텍처 &amp; 모듈 구성</h2>
+        <div class="content">
+            <p><strong>멀티 모듈 구조:</strong> <code>core</code>(공유 R2DBC 엔티티&middot;레포지토리) / <code>gateway</code>(사용자 API, 8080) / <code>admin</code>(어드민 전용 API, 8090) / <code>web</code>·<code>console</code>(React SPA)로 관심사를 분리했습니다.</p>
+            <p><strong>프록시 인증 분리:</strong> 일반 API는 JWT, <code>/gateway/**</code> 프록시 경로는 <code>X-API-KEY</code> 헤더로 별도 인증하며, 권한(role)과 과금 등급(tier)을 분리 관리해 등급 변경 API로 권한이 상승하는 취약점을 원천 차단했습니다.</p>
+            <p><strong>완전 논블로킹:</strong> 모든 컨트롤러가 Mono/Flux를 반환하는 리액티브 스택으로 구성되어 있습니다.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>보안 설계</h2>
+        <ul class="project-bullets">
+            <li>API Key 무차별 대입 방어: 고엔트로피 키 발급 + IP 화이트리스트 필터로 유출 키 오용 차단</li>
+            <li>Redis Token Bucket 기반 Rate Limiting으로 DoS/DDoS 트래픽을 게이트웨이 진입 단계에서 컷오프</li>
+            <li>URL/쿼리 파라미터 화이트리스트 정규식 필터 + Named Parameter로 인젝션 공격 차단</li>
+            <li>입점사 원본 인증 토큰은 AES-256 암호화 후 DB 저장, 복호화 키는 런타임 Secret으로 주입</li>
+            <li>Redis Lua Script로 쿼터 차감을 원자적 연산으로 묶어 동시 요청 레이스 컨디션 방지</li>
+        </ul>
+    </section>
+</div>
+</div>
+
+</body>
+</html>

@@ -12,10 +12,31 @@
 
 <div class="page-body">
 <div class="container">
-    <div class="empty-state">
-        <h1>포트폴리오 준비 중입니다</h1>
-        <p>곧 프로젝트 사례를 정리해서 올릴 예정입니다.</p>
-    </div>
+    <section>
+        <h2>포트폴리오</h2>
+        <div class="portfolio-row">
+            <div class="portfolio-card-lg">
+                <img class="portfolio-card-thumb" th:src="@{/images/stocksense-sample.jpg}" alt="StockSense 미리보기">
+                <div class="portfolio-card-title">StockSense</div>
+                <p class="portfolio-card-desc">한국투자증권 API 기반 주식 포트폴리오 관리 및 AI 주가 예측 서비스</p>
+                <div class="portfolio-card-links">
+                    <a class="portfolio-link" href="/portfolio/stocksense">상세보기</a>
+                    <a class="portfolio-link portfolio-link-secondary" href="https://stocksense.hypepia.com" target="_blank" rel="noopener">사이트 바로가기 ↗</a>
+                    <a class="portfolio-link portfolio-link-secondary" href="https://github.com/hy1116/stocksense" target="_blank" rel="noopener">GitHub ↗</a>
+                </div>
+            </div>
+            <div class="portfolio-card-lg">
+                <img class="portfolio-card-thumb" th:src="@{/images/apiverse-sample.jpg}" alt="APIverse 미리보기">
+                <div class="portfolio-card-title">APIverse</div>
+                <p class="portfolio-card-desc">가입 즉시 샌드박스 키가 발급되는 Developer-First API 마켓플레이스 & 게이트웨이</p>
+                <div class="portfolio-card-links">
+                    <a class="portfolio-link" href="/portfolio/apiverse">상세보기</a>
+                    <a class="portfolio-link portfolio-link-secondary" href="https://apiverse.hypepia.com" target="_blank" rel="noopener">사이트 바로가기 ↗</a>
+                    <a class="portfolio-link portfolio-link-secondary" href="https://github.com/hy1116/apiverse" target="_blank" rel="noopener">GitHub ↗</a>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 </div>
 

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>최현영 - StockSense</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/nav :: nav(active='portfolio')}"></div>
+
+<div class="page-body">
+<div class="container">
+    <a class="detail-back-link" href="/portfolio">&larr; 포트폴리오 목록으로</a>
+
+    <img class="detail-hero-image" th:src="@{/images/stocksense-sample.jpg}" alt="StockSense 미리보기">
+
+    <div class="detail-title">StockSense</div>
+    <p class="detail-tagline">한국투자증권 Open API를 활용한 주식 포트폴리오 관리 및 AI 주가 예측 서비스</p>
+    <div class="portfolio-card-links" style="margin-bottom: 40px;">
+        <a class="portfolio-link" href="https://stocksense.hypepia.com" target="_blank" rel="noopener">사이트 바로가기 ↗</a>
+        <a class="portfolio-link portfolio-link-secondary" href="https://github.com/hy1116/stocksense" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+
+    <section>
+        <h2>주요 기능</h2>
+        <ul class="project-bullets">
+            <li>실시간 포트폴리오 조회 (잔고, 보유종목, 수익률)</li>
+            <li>종목 상세 정보 및 차트 (OHLCV)</li>
+            <li>AI 기반 주가 예측 (XGBoost + LSTM 앙상블)</li>
+            <li>주식 매수/매도 주문 (한국투자증권 API 연동, 모의투자 지원)</li>
+            <li>거래량 상위 종목 조회 및 관심종목 &middot; 가격 알림</li>
+            <li>Kafka 기반 실시간 가격 알림: Naver Finance 시세 폴링 &rarr; 조건 충족 시 알림 이벤트 발행</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>기술 스택</h2>
+        <div class="content">
+            <div class="tech-category">
+                <div class="tech-title">Backend</div>
+                <div class="tech-badges">
+                    <span class="badge badge-highlight">FastAPI</span>
+                    <span class="badge">SQLAlchemy 2.0 (async)</span>
+                    <span class="badge">PostgreSQL</span>
+                    <span class="badge">Redis</span>
+                    <span class="badge">Kafka</span>
+                    <span class="badge">한국투자증권 Open API</span>
+                </div>
+            </div>
+            <div class="tech-category">
+                <div class="tech-title">ML / Data</div>
+                <div class="tech-badges">
+                    <span class="badge badge-highlight">XGBoost</span>
+                    <span class="badge badge-highlight">LSTM</span>
+                    <span class="badge">Argo Workflows (K8s CronJob)</span>
+                    <span class="badge">뉴스 감성분석</span>
+                </div>
+            </div>
+            <div class="tech-category">
+                <div class="tech-title">Frontend</div>
+                <div class="tech-badges">
+                    <span class="badge">React</span>
+                    <span class="badge">Vite</span>
+                    <span class="badge">Chart.js</span>
+                    <span class="badge">Axios</span>
+                </div>
+            </div>
+            <div class="tech-category">
+                <div class="tech-title">Infra</div>
+                <div class="tech-badges">
+                    <span class="badge badge-highlight">Docker</span>
+                    <span class="badge badge-highlight">Kubernetes</span>
+                    <span class="badge">EFK (Elasticsearch/Fluentd/Kibana)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>아키텍처 특징</h2>
+        <div class="content">
+            <p><strong>ML 예측 파이프라인:</strong> 일별 시세 수집 &rarr; 전일 예측 평가 &rarr; 뉴스 크롤링/감성분석 &rarr; 피처 엔지니어링(MA5/10/20, RSI, Bollinger Bands, MACD) &rarr; XGBoost/LSTM 학습 순으로 이어지는 배치 파이프라인을 Argo Workflows로 자동화했습니다. 새 모델이 기존보다 성능이 좋을 때만 자동 활성화됩니다.</p>
+            <p><strong>실시간 알림:</strong> 두 개의 백그라운드 태스크(price_producer / alert_consumer)가 Kafka 토픽을 통해 시세 폴링과 알림 조건 판정을 비동기로 분리 처리합니다.</p>
+            <p><strong>운영 안정성:</strong> Redis 캐싱은 장애 시 자동 degrade 되도록 설계했고, 프로덕션 환경은 K8s 위에서 EFK 스택으로 로그를 수집합니다.</p>
+        </div>
+    </section>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <text x="50%" y="46%" text-anchor="middle" font-family="Pretendard, sans-serif" font-size="40" font-weight="800" fill="#ffffff">StockSense</text>
+  <text x="50%" y="58%" text-anchor="middle" font-family="Pretendard, sans-serif" font-size="16" font-weight="500" fill="#bfdbfe">AI 주가 예측 &#183; 포트폴리오 관리</text>
+</svg>

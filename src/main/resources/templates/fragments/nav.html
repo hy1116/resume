@@ -3,9 +3,13 @@
 <body>
 <header th:fragment="nav(active)" class="site-nav">
     <div class="site-nav-inner">
-        <a class="site-nav-brand" href="/">최현영</a>
+        <a class="site-nav-brand" href="/">
+            <span class="site-nav-logo">Resume</span>
+            <span class="site-nav-name">최현영</span>
+        </a>
         <nav class="site-nav-links">
             <a href="/" th:classappend="${active == 'resume'} ? 'is-active'">이력서</a>
+            <a href="/introduction" th:classappend="${active == 'introduction'} ? 'is-active'">자기소개서</a>
             <a href="/portfolio" th:classappend="${active == 'portfolio'} ? 'is-active'">포트폴리오</a>
         </nav>
     </div>
