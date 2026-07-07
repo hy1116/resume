@@ -12,12 +12,21 @@ import reactor.core.publisher.Mono;
 
 import java.net.InetSocketAddress;
 import java.time.Instant;
+import java.util.Map;
 
 @Component
 public class AccessLogFilter implements WebFilter {
 
     private static final Logger log = LoggerFactory.getLogger(AccessLogFilter.class);
     private static final String[] SKIP_PREFIXES = {"/css/", "/images/", "/favicon.ico"};
+    private static final Map<String, String> PAGE_NAMES = Map.of(
+            "/", "이력서",
+            "/introduction", "자기소개",
+            "/portfolio", "포트폴리오",
+            "/portfolio/stocksense", "포트폴리오 - StockSense",
+            "/portfolio/apiverse", "포트폴리오 - APIverse",
+            "/locked", "잠금 화면"
+    );
 
     private final AccessLogRepository accessLogRepository;
 
@@ -49,9 +58,11 @@ public class AccessLogFilter implements WebFilter {
 
     private Mono<Void> recordAccess(ServerWebExchange exchange) {
         return exchange.getSession().flatMap(session -> {
+            String path = exchange.getRequest().getPath().value();
             AccessLog entry = new AccessLog(
                     null,
-                    exchange.getRequest().getPath().value(),
+                    path,
+                    PAGE_NAMES.getOrDefault(path, path),
                     exchange.getRequest().getMethod().name(),
                     exchange.getResponse().getStatusCode() != null ? exchange.getResponse().getStatusCode().value() : 0,
                     resolveClientIp(exchange),

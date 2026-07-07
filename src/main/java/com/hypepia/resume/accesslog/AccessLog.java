@@ -9,6 +9,7 @@ import java.time.Instant;
 public record AccessLog(
         @Id String id,
         String path,
+        String pageName,
         String method,
         int statusCode,
         String remoteAddress,
