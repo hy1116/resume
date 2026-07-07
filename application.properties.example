@@ -1,1 +1,5 @@
 resume.access-password=CHANGE_ME
+resume.access-token=CHANGE_ME_TOKEN
+
+# e.g. mongodb://localhost:27017/resume or a MongoDB Atlas connection string
+spring.data.mongodb.uri=CHANGE_ME_MONGODB_URI

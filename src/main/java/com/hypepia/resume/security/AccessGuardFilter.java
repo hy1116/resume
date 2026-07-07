@@ -1,6 +1,7 @@
 package com.hypepia.resume.security;
 
 import org.jspecify.annotations.NullMarked;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
@@ -15,6 +16,10 @@ import java.util.Set;
 public class AccessGuardFilter implements WebFilter {
 
     private static final Set<String> PROTECTED_PATHS = Set.of("/", "/introduction");
+    private static final String TOKEN_PARAM = "key";
+
+    @Value("${resume.access-token:}")
+    private String accessToken;
 
     @Override
     @NullMarked
@@ -22,6 +27,16 @@ public class AccessGuardFilter implements WebFilter {
         String path = exchange.getRequest().getPath().value();
         if (!PROTECTED_PATHS.contains(path)) {
             return chain.filter(exchange);
+        }
+
+        String token = exchange.getRequest().getQueryParams().getFirst(TOKEN_PARAM);
+        if (!accessToken.isBlank() && accessToken.equals(token)) {
+            return exchange.getSession().flatMap(session -> {
+                session.getAttributes().put("unlocked", true);
+                exchange.getResponse().setStatusCode(HttpStatus.FOUND);
+                exchange.getResponse().getHeaders().setLocation(URI.create(path));
+                return exchange.getResponse().setComplete();
+            });
         }
 
         return exchange.getSession().flatMap(session -> {
