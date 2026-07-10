@@ -173,7 +173,6 @@ header {
     color: var(--text-main);
     font-weight: 400;
     word-break: keep-all;
-    text-align: center;
 }
 
 section {

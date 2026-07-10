@@ -170,7 +170,7 @@
         <h2>경력</h2>
         <div class="company-header">
             <div class="company-name">비즈마켓</div>
-            <div class="company-period">2019.05 ~ 현재 (6년 8개월)</div>
+            <div class="company-period" id="career-period" data-start="2019-05">2019.05 ~ 현재</div>
         </div>
         <div class="company-role">백엔드 개발 선임 &middot; 쇼핑몰 및 모바일 쿠폰 서비스 백엔드 개발 및 유지보수</div>
 
@@ -365,6 +365,23 @@
 </div>
 
 <button class="print-fab" type="button" onclick="window.print()">PDF 다운로드</button>
+
+<script th:inline="javascript">
+    (function () {
+        const el = document.getElementById('career-period');
+        if (!el) return;
+        const [startYear, startMonth] = el.dataset.start.split('-').map(Number);
+        const start = new Date(startYear, startMonth - 1, 1);
+        const now = new Date();
+        let years = now.getFullYear() - start.getFullYear();
+        let months = now.getMonth() - start.getMonth();
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+        el.textContent = el.textContent + ` (${years}년 ${months}개월)`;
+    })();
+</script>
 
 </body>
 </html>
