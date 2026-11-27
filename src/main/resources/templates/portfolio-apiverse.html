@@ -62,6 +62,14 @@
                 </div>
             </div>
             <div class="tech-category">
+                <div class="tech-title">Batch</div>
+                <div class="tech-badges">
+                    <span class="badge badge-highlight">Spring Batch</span>
+                    <span class="badge">JDBC (PostgreSQL)</span>
+                    <span class="badge">Kubernetes CronJob</span>
+                </div>
+            </div>
+            <div class="tech-category">
                 <div class="tech-title">Frontend</div>
                 <div class="tech-badges">
                     <span class="badge">React 18</span>
@@ -82,10 +90,25 @@
     <section>
         <h2>아키텍처 &amp; 모듈 구성</h2>
         <div class="content">
-            <p><strong>멀티 모듈 구조:</strong> <code>core</code>(공유 R2DBC 엔티티&middot;레포지토리) / <code>gateway</code>(사용자 API, 8080) / <code>admin</code>(어드민 전용 API, 8090) / <code>web</code>·<code>console</code>(React SPA)로 관심사를 분리했습니다.</p>
+            <p><strong>멀티 모듈 구조:</strong> <code>core</code>(공유 R2DBC 엔티티&middot;레포지토리) / <code>gateway</code>(사용자 API, 8080) / <code>admin</code>(어드민 전용 API, 8090) / <code>batch</code>(Spring Batch 월 정산, CronJob으로 실행 후 종료) / <code>web</code>·<code>console</code>(React SPA)로 관심사를 분리했습니다.</p>
             <p><strong>프록시 인증 분리:</strong> 일반 API는 JWT, <code>/gateway/**</code> 프록시 경로는 <code>X-API-KEY</code> 헤더로 별도 인증하며, 권한(role)과 과금 등급(tier)을 분리 관리해 등급 변경 API로 권한이 상승하는 취약점을 원천 차단했습니다.</p>
             <p><strong>완전 논블로킹:</strong> 모든 컨트롤러가 Mono/Flux를 반환하는 리액티브 스택으로 구성되어 있습니다.</p>
         </div>
+    </section>
+
+    <section>
+        <h2>월 정산 배치: @Scheduled &rarr; Spring Batch 전환</h2>
+        <div class="content">
+            <p>기존에는 gateway 안의 <code>@Scheduled</code> 작업이 매월 1일 모든 키의 사용량(<code>used_quota</code>)을 기록 없이 0으로 덮어썼습니다. 지난달 사용 이력이 남지 않고, 실패해도 재시도가 없으며, gateway를 여러 대로 늘리면 중복 실행될 수 있는 구조였습니다.</p>
+            <p>이를 별도 <code>batch</code> 모듈의 Spring Batch 정산 Job으로 옮겨, 지난달 키별 사용량을 스냅샷으로 남긴 뒤 쿼터를 초기화하도록 바꿨습니다. 실행은 Kubernetes CronJob이 매월 1일 한 번만 맡습니다.</p>
+        </div>
+        <ul class="project-bullets">
+            <li>2단계 Step 구성: 사용량 스냅샷(chunk, JdbcPagingItemReader 500건 단위)이 성공한 뒤에만 쿼터 초기화(tasklet) 실행</li>
+            <li>재실행 안전성: 스냅샷은 upsert로 저장해 중간 실패 후 재시작해도 중복 없음, 완료된 스텝은 재시작 시 건너뛰어 두 번 차감되지 않음</li>
+            <li>쿼터는 0으로 덮어쓰지 않고 스냅샷 값만큼만 차감해, 정산 도중 들어온 이번 달 호출분을 보존</li>
+            <li>같은 월 Job은 JobInstance로 중복 실행을 막고, 지난달이 아닌 월 파라미터는 검증 단계에서 거부</li>
+            <li>CronJob 동시 실행 금지(Forbid), 실패 시 Spring Batch가 실패한 스텝부터 재시작하고 종료 코드로 성공 여부 전달</li>
+        </ul>
     </section>
 
     <section>
