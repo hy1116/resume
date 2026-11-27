@@ -16,6 +16,11 @@ public class PageController {
         return "introduction";
     }
 
+    @GetMapping("/career")
+    public String career() {
+        return "career";
+    }
+
     @GetMapping("/portfolio")
     public String portfolio() {
         return "portfolio";

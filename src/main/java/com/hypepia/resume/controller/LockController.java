@@ -16,7 +16,7 @@ import java.util.Set;
 @Controller
 public class LockController {
 
-    private static final Set<String> ALLOWED_REDIRECTS = Set.of("/", "/introduction");
+    private static final Set<String> ALLOWED_REDIRECTS = Set.of("/", "/introduction", "/career");
 
     @Value("${resume.access-password}")
     private String accessPassword;

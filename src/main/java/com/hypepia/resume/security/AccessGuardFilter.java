@@ -15,7 +15,7 @@ import java.util.Set;
 @Component
 public class AccessGuardFilter implements WebFilter {
 
-    private static final Set<String> PROTECTED_PATHS = Set.of("/", "/introduction");
+    private static final Set<String> PROTECTED_PATHS = Set.of("/", "/introduction", "/career", "/profile-photo");
     private static final String TOKEN_PARAM = "key";
 
     @Value("${resume.access-token:}")

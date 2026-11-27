@@ -7,7 +7,7 @@
     <link rel="icon" th:href="@{/favicon.svg(v=${assetVersion})}" type="image/svg+xml">
     <link rel="icon" th:href="@{/favicon.ico}" sizes="any">
     <link rel="apple-touch-icon" th:href="@{/apple-touch-icon.png}">
-    <link rel="preload" th:href="@{/fonts/pretendard-subset-1976adba.woff2}" as="font" type="font/woff2" crossorigin>
+    <th:block th:replace="~{fragments/font :: font}"></th:block>
     <link rel="stylesheet" th:href="@{/css/main.css(v=${assetVersion})}">
 </head>
 <body>
@@ -18,6 +18,7 @@
 <div class="container">
     <header>
         <div class="header-top">
+            <div class="profile-main">
             <div class="name-title">
                 <h1 class="name">최현영</h1>
                 <div class="title-sub">백엔드 개발자 &middot; Java / Spring &middot; 7년차</div>
@@ -48,6 +49,8 @@
                     <span><a href="https://github.com/hy1116" target="_blank">github.com/hy1116</a></span>
                 </div>
             </div>
+            </div>
+            <img class="profile-photo" th:src="@{/profile-photo(v=${assetVersion})}" width="300" height="385" fetchpriority="high" alt="최현영 증명사진">
         </div>
 
         <section>
@@ -87,6 +90,21 @@
                 </div>
             </div>
         </section>
+
+        <section>
+            <div class="info-section">
+                <h2>교육이수내역</h2>
+                <div class="info-block">
+                    <div class="info-title">KH정보교육원</div>
+                    <div class="info-desc">2018.08 ~ 2019.02</div>
+                    <ul class="project-bullets edu-bullets">
+                        <li>Java 기반 웹 서비스 개발 과정 수료 (아두이노 실습 포함)</li>
+                        <li>팀 프로젝트 2회 진행, 팀 리딩</li>
+                        <li>파이널 프로젝트 최우수 프로젝트 선정</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </header>
 
     <section>
@@ -97,25 +115,28 @@
                     <span class="strength-num">01</span>
                     보안과 안정성을 최우선으로 생각하는 개발자
                 </div>
-                <p class="strength-desc">모의해킹 취약점 약 1,400건을 직접 분석하고 조치한 경험을 바탕으로, 보안을 후처리가 아닌 개발 단계부터 고려합니다. Spring Security, Oauth2, JWT, MFA, Jasypt 암호화 등을 전사 서비스에 적용하며 실제 운영 환경의 보안 수준을 높여왔습니다.</p>
+                <p class="strength-desc">모의해킹 취약점 약 1,400건을 직접 분석하고 조치한 경험을 바탕으로, 보안을 후처리가 아닌 개발 단계부터 고려합니다. Spring Security, OAuth 2.0, JWT, 2차 인증(MFA), Jasypt 암호화를 담당 서비스 전반에 적용해 왔고, 최근에는 ISMS 대응으로 개인정보 암·복호화만 전담하는 KMS 서비스를 직접 설계해 평문으로 저장되던 민감정보를 없앴습니다.</p>
             </div>
             <div class="strength-item">
                 <div class="strength-title">
                     <span class="strength-num">02</span>
                     레거시를 현대화하는 마이그레이션 경험
                 </div>
-                <p class="strength-desc">Java 7 &rarr; 17 마이그레이션과 Spring Framework&middot;ORM 업그레이드를 주도하며 오래된 시스템을 안정적으로 현대화한 경험이 있습니다. 프레임워크 Config 설정, 및 Maven/Gradle 적용 및 배포방식 개선, Spring Security + JWT 방식으로 전환하는 등 레거시 코드를 점진적으로 개선하는 작업에 강점이 있습니다.</p>
+                <p class="strength-desc">Java 7 &rarr; 17 마이그레이션과 Spring Framework&middot;ORM 업그레이드를 주도해 오래된 시스템을 안정적으로 현대화했습니다. 최근에는 모바일쿠폰 5개 모듈을 Spring 6&middot;Tomcat 10으로 전환하며 javax &rarr; jakarta 이관과 노후 라이브러리 정리까지 마쳤습니다. 수동 관리하던 라이브러리의 Maven 전환, 환경별 배포 분리, 세션 로그인의 Spring Security + JWT 전환처럼 레거시를 단계적으로 개선하는 데 강점이 있습니다.</p>
             </div>
             <div class="strength-item">
                 <div class="strength-title">
                     <span class="strength-num">03</span>
                     다양한 외부 시스템 연동 전문성
                 </div>
-                <p class="strength-desc">다우, 기프티콘, 컬쳐랜드 등 10개 이상의 외부 공급사 API 연동부터 SSO, KG통합인증, 검색엔진 연동까지 다양한 외부 시스템과의 통합 경험을 보유하고 있습니다. 각 연동마다 예외 처리와 운영 안정성을 함께 고려하여 장애 없이 서비스를 운영해왔습니다.</p>
+                <p class="strength-desc">다우, 기프티콘, 컬쳐랜드 등 10곳 이상의 외부 공급사 API 연동부터 고객사 SSO&middot;OAuth, KG이니시스 통합인증, 한국전자인증(PKI), 검색엔진 연동까지 다양한 외부 시스템을 통합해 왔습니다. 연동마다 예외 처리와 운영 안정성을 함께 설계하며, 최근에는 핀 발급&middot;API 호출 통계를 직접 구축해 연동 장애를 바로 파악할 수 있게 했습니다.</p>
             </div>
         </div>
     </section>
 
+    <!-- 기술 스택·경력: 경력기술서 탭(/career)으로 옮기면서 숨김 처리.
+         다시 보이게 하려면 아래 th:if 를 지우면 된다. (th:if=false 라 HTML에 출력되지 않음) -->
+    <th:block th:if="${false}">
     <section>
         <h2>기술 스택</h2>
         <div class="content">
@@ -380,9 +401,12 @@
             </div>
         </div>
     </section>
+    </th:block>
 
     <div class="footer-line">
         &copy; 2026 Choi Hyunyoung. Resume Page.
+        <span class="footer-sep">&middot;</span>
+        <a class="footer-link" href="https://github.com/hy1116/resume" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
 </div>
 </div>

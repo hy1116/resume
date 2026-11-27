@@ -20,10 +20,11 @@ import java.util.Map;
 public class AccessLogFilter implements WebFilter {
 
     private static final Logger log = LoggerFactory.getLogger(AccessLogFilter.class);
-    private static final String[] SKIP_PREFIXES = {"/css/", "/images/", "/fonts/", "/favicon", "/apple-touch-icon", "/api/status"};
+    private static final String[] SKIP_PREFIXES = {"/css/", "/images/", "/fonts/", "/favicon", "/apple-touch-icon", "/api/status", "/profile-photo"};
     private static final Map<String, String> PAGE_NAMES = Map.of(
             "/", "이력서",
             "/introduction", "자기소개",
+            "/career", "경력기술서",
             "/portfolio", "포트폴리오",
             "/portfolio/stocksense", "포트폴리오 - StockSense",
             "/portfolio/apiverse", "포트폴리오 - APIverse",

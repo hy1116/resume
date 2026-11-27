@@ -1,5 +1,4 @@
 resume.access-password=CHANGE_ME
 resume.access-token=CHANGE_ME_TOKEN
 
-# e.g. mongodb://localhost:27017/resume or a MongoDB Atlas connection string
-spring.data.mongodb.uri=CHANGE_ME_MONGODB_URI
+# MongoDB 접속정보는 .env 의 SPRING_MONGODB_URI 로 설정한다 (.env.example 참고)

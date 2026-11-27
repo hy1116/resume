@@ -7,7 +7,7 @@
     <link rel="icon" th:href="@{/favicon.svg(v=${assetVersion})}" type="image/svg+xml">
     <link rel="icon" th:href="@{/favicon.ico}" sizes="any">
     <link rel="apple-touch-icon" th:href="@{/apple-touch-icon.png}">
-    <link rel="preload" th:href="@{/fonts/pretendard-subset-1976adba.woff2}" as="font" type="font/woff2" crossorigin>
+    <th:block th:replace="~{fragments/font :: font}"></th:block>
     <link rel="stylesheet" th:href="@{/css/main.css(v=${assetVersion})}">
 </head>
 <body>
@@ -60,6 +60,8 @@
 
     <div class="footer-line">
         &copy; 2026 Choi Hyunyoung. Resume Page.
+        <span class="footer-sep">&middot;</span>
+        <a class="footer-link" href="https://github.com/hy1116/resume" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
 </div>
 </div>

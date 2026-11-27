@@ -9,15 +9,13 @@ Pretendard Variable 폰트를 사이트 템플릿에 실제로 쓰인 글자만 
     python scripts/subset_font.py
 
 결과:
-    - static/fonts/pretendard-subset-<hash>.woff2 생성 (이전 파일 삭제)
-    - main.css 의 @font-face 와 템플릿의 preload 경로를 새 파일명으로 교체
+    - static/fonts/pretendard-subset.woff2 덮어쓰기 (파일명 고정 — 템플릿·CSS는 고칠 필요 없음,
+      캐시는 templates/fragments/font.html 의 ?v=assetVersion 으로 배포마다 갱신)
     - scripts/pretendard-subset-chars.txt 갱신 (테스트에서 사용)
 """
 import glob
-import hashlib
 import io
 import os
-import re
 import urllib.request
 
 from fontTools import subset
@@ -26,11 +24,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RES = os.path.join(ROOT, "src", "main", "resources")
 TEMPLATES = os.path.join(RES, "templates")
 FONT_DIR = os.path.join(RES, "static", "fonts")
-CSS = os.path.join(RES, "static", "css", "main.css")
 CHARS_FILE = os.path.join(ROOT, "scripts", "pretendard-subset-chars.txt")
 SOURCE_URL = ("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/"
               "packages/pretendard/dist/web/variable/woff2/PretendardVariable.woff2")
-FONT_PATTERN = re.compile(r"pretendard-subset-[0-9a-f]+\.woff2")
 
 
 def collect_chars():
@@ -55,29 +51,16 @@ def build_subset(text):
     return out.getvalue()
 
 
-def replace_in_file(path, new_name):
-    with open(path, encoding="utf-8", newline="") as f:
-        content = f.read()
-    updated = FONT_PATTERN.sub(new_name, content)
-    if updated != content:
-        with open(path, "w", encoding="utf-8", newline="") as f:
-            f.write(updated)
-
-
 def main():
     text = collect_chars()
     data = build_subset(text)
-    name = f"pretendard-subset-{hashlib.sha256(data).hexdigest()[:8]}.woff2"
+    name = "pretendard-subset.woff2"
 
     os.makedirs(FONT_DIR, exist_ok=True)
     for old in glob.glob(os.path.join(FONT_DIR, "pretendard-subset-*.woff2")):
         os.remove(old)
     with open(os.path.join(FONT_DIR, name), "wb") as f:
         f.write(data)
-
-    replace_in_file(CSS, name)
-    for path in glob.glob(os.path.join(TEMPLATES, "**", "*.html"), recursive=True):
-        replace_in_file(path, name)
 
     with open(CHARS_FILE, "w", encoding="utf-8", newline="\n") as f:
         f.write(text)
