@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>최현영 - StockSense</title>
-    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="icon" th:href="@{/favicon.svg(v=${assetVersion})}" type="image/svg+xml">
+    <link rel="icon" th:href="@{/favicon.ico}" sizes="any">
+    <link rel="apple-touch-icon" th:href="@{/apple-touch-icon.png}">
+    <link rel="preload" th:href="@{/fonts/pretendard-subset-1976adba.woff2}" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" th:href="@{/css/main.css(v=${assetVersion})}">
 </head>
 <body>
 
@@ -14,7 +18,7 @@
 <div class="container">
     <a class="detail-back-link" href="/portfolio">&larr; 포트폴리오 목록으로</a>
 
-    <img class="detail-hero-image" th:src="@{/images/stocksense-sample.jpg}" alt="StockSense 미리보기">
+    <img class="detail-hero-image" th:src="@{/images/stocksense-sample.webp(v=${assetVersion})}" width="1176" height="898" fetchpriority="high" alt="StockSense 미리보기">
 
     <div class="detail-title">StockSense</div>
     <p class="detail-tagline">한국투자증권 Open API를 활용한 주식 포트폴리오 관리 및 AI 주가 예측 서비스</p>

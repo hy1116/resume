@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>최현영 - 포트폴리오</title>
-    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="icon" th:href="@{/favicon.svg(v=${assetVersion})}" type="image/svg+xml">
+    <link rel="icon" th:href="@{/favicon.ico}" sizes="any">
+    <link rel="apple-touch-icon" th:href="@{/apple-touch-icon.png}">
+    <link rel="preload" th:href="@{/fonts/pretendard-subset-1976adba.woff2}" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" th:href="@{/css/main.css(v=${assetVersion})}">
 </head>
 <body>
 
@@ -20,30 +24,60 @@
         <div class="portfolio-row">
             <h2>StockSense</h2>
             <div class="portfolio-card-lg">
-                <img class="portfolio-card-thumb" th:src="@{/images/stocksense-sample.jpg}" alt="StockSense 미리보기">
+                <img class="portfolio-card-thumb" th:src="@{/images/stocksense-sample.webp(v=${assetVersion})}" width="1176" height="898" fetchpriority="high" alt="StockSense 미리보기">
                 <p class="portfolio-card-desc">한국투자증권 API 기반 주식 포트폴리오 관리 및 AI 주가 예측 서비스</p>
                 <div class="portfolio-card-links">
                     <a class="portfolio-link" href="/portfolio/stocksense">상세보기</a>
                     <a class="portfolio-link portfolio-link-secondary" href="https://stocksense.hypepia.com" target="_blank" rel="noopener">사이트 바로가기 ↗</a>
                     <a class="portfolio-link portfolio-link-secondary" href="https://github.com/hy1116/stocksense" target="_blank" rel="noopener">GitHub ↗</a>
+                    <span class="status-badge" data-status-key="stocksense">상태 확인 중</span>
                 </div>
             </div>
         </div>
         <div class="portfolio-row">
             <h2>APIverse</h2>
             <div class="portfolio-card-lg">
-                <img class="portfolio-card-thumb" th:src="@{/images/apiverse-sample.jpg}" alt="APIverse 미리보기">
+                <img class="portfolio-card-thumb" th:src="@{/images/apiverse-sample.webp(v=${assetVersion})}" width="1339" height="901" loading="lazy" decoding="async" alt="APIverse 미리보기">
                 <p class="portfolio-card-desc">가입 즉시 샌드박스 키가 발급되는 Developer-First API 마켓플레이스 & 게이트웨이</p>
                 <div class="portfolio-card-links">
                     <a class="portfolio-link" href="/portfolio/apiverse">상세보기</a>
                     <a class="portfolio-link portfolio-link-secondary" href="https://apiverse.hypepia.com" target="_blank" rel="noopener">사이트 바로가기 ↗</a>
                     <a class="portfolio-link portfolio-link-secondary" href="https://github.com/hy1116/apiverse" target="_blank" rel="noopener">GitHub ↗</a>
+                    <span class="status-badge" data-status-key="apiverse">상태 확인 중</span>
+                </div>
+            </div>
+        </div>
+        <div class="portfolio-row">
+            <h2>퍼즐 게임</h2>
+            <div class="portfolio-card-lg">
+                <div class="portfolio-card-thumb portfolio-card-thumb-split">
+                    <img th:src="@{/images/slither-link-sample.webp(v=${assetVersion})}" width="560" height="822" loading="lazy" decoding="async" alt="Slither Link 미리보기">
+                    <img th:src="@{/images/minesweeper-sample.webp(v=${assetVersion})}" width="583" height="769" loading="lazy" decoding="async" alt="Minesweeper 미리보기">
+                </div>
+                <p class="portfolio-card-desc">점을 이어 하나의 고리를 만드는 논리 퍼즐 <strong>Slither Link</strong>와 찍을 필요 없는 지뢰찾기 <strong>Minesweeper</strong> — 모바일에서도 플레이할 수 있는 웹 퍼즐 게임</p>
+                <div class="portfolio-card-links">
+                    <a class="portfolio-link" href="https://hy1116.github.io/slither-link/" target="_blank" rel="noopener">Slither Link 플레이 ↗</a>
+                    <a class="portfolio-link" href="https://hy1116.github.io/minesweeper/" target="_blank" rel="noopener">Minesweeper 플레이 ↗</a>
+                    <span class="status-badge" data-status-key="puzzle">상태 확인 중</span>
                 </div>
             </div>
         </div>
     </section>
 </div>
 </div>
+
+<script>
+    fetch("/api/status")
+        .then(res => res.ok ? res.json() : {})
+        .catch(() => ({}))
+        .then(status => {
+            document.querySelectorAll(".status-badge").forEach(badge => {
+                const up = status[badge.dataset.statusKey] === "up";
+                badge.classList.add(up ? "status-up" : "status-down");
+                badge.textContent = up ? "운영 중" : "점검 중";
+            });
+        });
+</script>
 
 </body>
 </html>

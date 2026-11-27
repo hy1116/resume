@@ -39,3 +39,6 @@ out/
 ### Secrets ###
 application-secret.properties
 src/main/resources/application-secret.properties
+### Share links (contains access token) ###
+share-links.html
+share-links.pdf

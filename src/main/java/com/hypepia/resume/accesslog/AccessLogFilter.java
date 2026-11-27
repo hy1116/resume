@@ -3,6 +3,7 @@ package com.hypepia.resume.accesslog;
 import org.jspecify.annotations.NullMarked;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBooleanProperty;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
@@ -15,10 +16,11 @@ import java.time.Instant;
 import java.util.Map;
 
 @Component
+@ConditionalOnBooleanProperty(name = AccessLogEnvironmentPostProcessor.ENABLED_PROPERTY, matchIfMissing = true)
 public class AccessLogFilter implements WebFilter {
 
     private static final Logger log = LoggerFactory.getLogger(AccessLogFilter.class);
-    private static final String[] SKIP_PREFIXES = {"/css/", "/images/", "/favicon.ico"};
+    private static final String[] SKIP_PREFIXES = {"/css/", "/images/", "/fonts/", "/favicon", "/apple-touch-icon", "/api/status"};
     private static final Map<String, String> PAGE_NAMES = Map.of(
             "/", "이력서",
             "/introduction", "자기소개",
