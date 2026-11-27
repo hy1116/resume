@@ -39,8 +39,14 @@ out/
 ### Secrets ###
 application-secret.properties
 src/main/resources/application-secret.properties
+
 ### Share links (contains access token) ###
 share-links.html
 share-links.pdf
+
 ### Env (DB 접속정보 등) ###
 .env
+
+### Cluade ###
+.claude
+CLAUDE.md
