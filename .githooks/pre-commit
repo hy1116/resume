@@ -1,0 +1,34 @@
+#!/bin/sh
+# 커밋 전 검사 (켜기: git config core.hooksPath .githooks)
+#  1. 비밀 파일(.env, 공유 링크, secret 설정)이 커밋에 들어가는 것을 막는다
+#  2. MongoDB 접속 정보(아이디·비밀번호가 들어간 URI)가 커밋되는 것을 막는다 (예시 값 USER:PASSWORD 는 허용)
+#  3. 템플릿이 바뀌었으면 서브셋 폰트에 없는 글자가 있는지 검사한다
+# 급할 때 건너뛰기: git commit --no-verify
+
+fail=0
+staged=$(git diff --cached --name-only --diff-filter=ACMR)
+
+for f in $staged; do
+    case "$f" in
+        .env|*/.env|share-links.html|share-links.pdf|*application-secret.properties)
+            echo "[pre-commit] 비밀 정보가 들어 있는 파일은 커밋할 수 없습니다: $f"
+            fail=1 ;;
+    esac
+done
+
+if git diff --cached -U0 --diff-filter=ACMR | grep -E '^\+' | grep -E 'mongodb(\+srv)?://[^:/@[:space:]]+:[^@[:space:]]+@' | grep -qvE '://USER:PASSWORD@'; then
+    echo "[pre-commit] 아이디·비밀번호가 포함된 MongoDB URI가 있습니다. .env 로 옮기세요."
+    fail=1
+fi
+
+[ "$fail" -ne 0 ] && exit 1
+
+if echo "$staged" | grep -q '^src/main/resources/templates/'; then
+    echo "[pre-commit] 템플릿 변경 감지 — 폰트 글자 검사 중..."
+    if ! ./gradlew -q test --tests "com.hypepia.resume.FontSubsetCoverageTest"; then
+        echo "[pre-commit] 서브셋 폰트에 없는 글자가 있습니다. python scripts/subset_font.py 실행 후 다시 커밋하세요."
+        exit 1
+    fi
+fi
+
+exit 0
