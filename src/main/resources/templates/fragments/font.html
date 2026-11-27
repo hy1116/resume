@@ -2,15 +2,15 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 <!--
-  사이트 폰트(Pretendard 서브셋). 파일명은 고정이고, 배포마다 바뀌는 ?v=assetVersion 으로 캐시를 갱신한다.
-  폰트를 다시 만들어도(scripts/subset_font.py) 이 파일이나 템플릿을 고칠 필요가 없다.
+  사이트 폰트: Pretendard Variable 의 고정 글자 세트(한글 2,350자 + 영문·기호, scripts/subset_font.py).
+  내용이 바뀌지 않는 파일이라 버전 쿼리 없이 1년 캐시한다. 문구를 바꿔도 다시 만들 필요가 없다.
 -->
 <th:block th:fragment="font">
-    <link rel="preload" th:href="@{/fonts/pretendard-subset.woff2(v=${assetVersion})}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" th:href="@{/fonts/pretendard-ks2350.woff2}" as="font" type="font/woff2" crossorigin>
     <style th:inline="css">
         @font-face {
             font-family: 'Pretendard Subset';
-            src: url([[@{/fonts/pretendard-subset.woff2(v=${assetVersion})}]]) format('woff2');
+            src: url([[@{/fonts/pretendard-ks2350.woff2}]]) format('woff2');
             font-weight: 45 920;
             font-style: normal;
             font-display: swap;
