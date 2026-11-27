@@ -18,8 +18,26 @@
 <div class="container">
     <header>
         <h1 class="name">경력기술서</h1>
-        <p class="intro-p">비즈마켓 IT연구소에서 7년간 모바일쿠폰(땡큐폰)·쿠폰함·복지몰 백엔드를 개발하고 운영했습니다. 외부 공급사 연동, 보안 강화, 레거시 현대화를 주로 맡았습니다.</p>
     </header>
+
+    <section>
+        <h2>경력</h2>
+        <div class="company-header">
+            <div class="company-name">비즈마켓</div>
+            <div class="company-period" id="career-period" data-start="2019-05">2019.05 ~ 현재</div>
+        </div>
+        <div class="company-role">대리 → 선임연구원 &middot; IT플랫폼팀 (2019~2021) → IT연구소 멤버십개발부 개발3팀 (2022~)</div>
+        <p class="career-scope">담당: 모바일쿠폰 시스템, 쿠폰함·선물함, 복지몰(몰플렉스·페이북 등), BI 시스템, FGATE 스마트 팩토링, KMS 암호화 서비스</p>
+
+        <h3 class="career-subtitle">주요 성과</h3>
+        <ul class="project-bullets">
+            <li>외부 쿠폰 공급사 API 연동 10곳 이상: 다우, 큐피콘, 기프티엘, 스퀘어노트, 11번가(기프티콘), 컬쳐랜드, GS엠비즈, 씨넵스, PCM Korea, 체인지콘, 기프티쇼</li>
+            <li>대량발송 속도 개선: 2,000건당 약 1시간 → 약 5분</li>
+            <li>고정비용 절감: MMS 발송비·웹서버 사용료 연 7,920만 원(월 660만 원)</li>
+            <li>모바일쿠폰 Java·Spring·Tomcat 버전 마이그레이션, Maven 빌드와 환경별 profile 도입</li>
+            <li>2026년 신규 서비스 2건(FGATE 스마트 팩토링, PX몰) 구축·오픈, 고객사 SSO 3건(한미약품·IBK·우리원마켓) 연동, ISMS 대응 KMS 암호화 서비스 개발</li>
+        </ul>
+    </section>
 
     <section>
         <h2>기술 스택</h2>
@@ -57,7 +75,7 @@
                     <span class="badge">MariaDB</span>
                     <span class="badge">Redis</span>
                 </div>
-                <div class="tech-note">대량발송 쿼리 튜닝, Tibero 전환, 로그인 실패 기록 관리</div>
+                <div class="tech-note">대량발송 쿼리 튜닝, Oracle → Tibero 전환, 로그인 실패 기록 관리</div>
             </div>
             <div class="tech-category">
                 <div class="tech-title">Server</div>
@@ -69,8 +87,9 @@
                     <span class="badge badge-highlight">Kubernetes</span>
                     <span class="badge">Shell script</span>
                     <span class="badge">Maven</span>
+                    <span class="badge badge-highlight">Jenkins</span>
                 </div>
-                <div class="tech-note">쿠폰함 운영 환경 구성, 환경별 배포</div>
+                <div class="tech-note">쿠폰함 운영 환경 구성, 모바일쿠폰 환경별 배포와 Jenkins·배포 스크립트 기반 빌드·배포 자동화</div>
             </div>
             <div class="tech-category">
                 <div class="tech-title">Frontend</div>
@@ -94,25 +113,6 @@
                 <div class="tech-note">개인 프로젝트 배포 환경 구성, APIverse 월 쿼터 초기화 스케줄러를 Spring Batch 정산 Job으로 전환</div>
             </div>
         </div>
-    </section>
-
-    <section>
-        <h2>경력</h2>
-        <div class="company-header">
-            <div class="company-name">비즈마켓</div>
-            <div class="company-period" id="career-period" data-start="2019-05">2019.05 ~ 현재</div>
-        </div>
-        <div class="company-role">대리 → 선임연구원 &middot; IT플랫폼팀 (2019~2021) → IT연구소 멤버십개발부 개발3팀 (2022~)</div>
-        <p class="career-scope">담당: 모바일쿠폰 시스템, 쿠폰함·선물함, 복지몰(몰플렉스·페이북 등), BI 시스템, FGATE 스마트 팩토링, KMS 암호화 서비스</p>
-
-        <h3 class="career-subtitle">주요 성과</h3>
-        <ul class="project-bullets">
-            <li>외부 쿠폰 공급사 API 연동 10곳 이상: 다우, 큐피콘, 기프티엘, 스퀘어노트, 11번가(기프티콘), 컬쳐랜드, GS엠비즈, 씨넵스, PCM Korea, 체인지콘, 기프티쇼</li>
-            <li>대량발송 속도 개선: 2,000건당 약 1시간 → 약 5분</li>
-            <li>고정비용 절감: MMS 발송비·웹서버 사용료 연 7,920만 원(월 660만 원)</li>
-            <li>모바일쿠폰 Java·Spring·Tomcat 버전 마이그레이션, Maven 빌드와 환경별 profile 도입</li>
-            <li>2026년 신규 서비스 2건(FGATE 스마트 팩토링, PX몰) 구축·오픈, 고객사 SSO 3건(한미약품·IBK·우리원마켓) 연동, ISMS 대응 KMS 암호화 서비스 개발</li>
-        </ul>
     </section>
 
     <section>
@@ -153,6 +153,25 @@
                     <span class="mini-badge">Tomcat 10</span>
                     <span class="mini-badge">Jakarta EE</span>
                     <span class="mini-badge">Jackson</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h3 class="project-title">빌드·배포 자동화</h3>
+                    <div class="project-period">2026.10 ~ 2026.11</div>
+                </div>
+                <ul class="project-bullets">
+                    <li>Jenkins 도입: 모듈·배포 방식을 골라 실행하는 파이프라인으로 개발 서버 빌드·배포 자동화</li>
+                    <li>운영 배포 스크립트 작성: 소스 최신화 → 운영 프로필 빌드 → WAR 교체를 명령 하나로 처리, 직전 버전 롤백과 모듈별 배포 커밋 확인 지원</li>
+                    <li>배포 안전장치: 기존 WAR 백업, Tomcat 정상 종료 대기 후 강제 종료, 기동 후 로그 에러와 /health 응답 확인, 동시 배포 잠금</li>
+                    <li>JSP·정적 파일만 바뀐 경우 재기동 없이 반영하는 웹 배포 모드 추가</li>
+                </ul>
+                <div class="project-techs">
+                    <span class="mini-badge">Jenkins</span>
+                    <span class="mini-badge">Shell script</span>
+                    <span class="mini-badge">Maven</span>
+                    <span class="mini-badge">Tomcat</span>
                 </div>
             </div>
 
@@ -200,7 +219,7 @@
                     <div class="project-period">2025.02 ~ 2025.05</div>
                 </div>
                 <ul class="project-bullets">
-                    <li>오래된 Java 버전 때문에 생기던 연동 문제를 해결하려고 Java·Spring Framework·Tomcat 버전 업그레이드</li>
+                    <li>오래된 Java 버전 때문에 생기던 연동 문제를 해결하려고 Java 7 → 17 전환과 Spring Framework·Tomcat 버전 업그레이드</li>
                     <li>MyBatis 전환, 의존성 주입 방식 변경, properties 수동 URL 매핑을 어노테이션 매핑으로 전환</li>
                     <li>수동 관리하던 라이브러리를 Maven 빌드로 전환, 로컬/개발/운영 profile 분리로 환경별 배포 안정화</li>
                     <li>XML만 지원하던 모든 API에 JSON 응답을 추가해 고객사별 맞춤 응답 제공</li>
@@ -229,7 +248,7 @@
 
     <section>
         <h2>2. 쿠폰함·선물함 서비스</h2>
-        <p class="career-lead">고객사 회원이 문자 대신 웹 쿠폰함에서 쿠폰을 받도록 SSO·쿠폰함·어드민을 개발했습니다. 쿠폰함 도입과 추첨식 이벤트로 MMS 발송비 월 600만 원과 웹서버 사용료 월 60만 원을 절감했습니다. <span class="career-lead-period">2020 ~ 2026</span></p>
+        <p class="career-lead">고객사 회원이 발급된 쿠폰을 문자 대신 웹 쿠폰함에서 조회하도록 SSO·쿠폰함·어드민을 개발했습니다. 쿠폰함 도입과 추첨식 이벤트로 MMS 발송비 월 600만 원과 웹서버 사용료 월 60만 원을 절감했습니다. <span class="career-lead-period">2020 ~ 2026</span></p>
         <div class="project-list">
             <div class="project-item">
                 <div class="project-header">
@@ -352,7 +371,7 @@
                 </div>
                 <ul class="project-bullets">
                     <li>Spring 버전 업그레이드와 JDK 교체</li>
-                    <li>서버 이관 선행 작업</li>
+                    <li>신규 서버 이관 대비 빌드·환경 정비: Ant·Maven 빌드 라이브러리 경로 통일, Tomcat 경로 표준화, Redis 서버 전환, Jenkins 빌드 정비</li>
                 </ul>
                 <div class="project-techs"><span class="mini-badge">Spring</span></div>
             </div>
@@ -388,7 +407,7 @@
                 <ul class="project-bullets">
                     <li>KG이니시스 본인인증·간편로그인·간편가입</li>
                     <li>등급별 이벤트 접근 제어, 식자재몰 오픈</li>
-                    <li>Tibero 전환 대응</li>
+                    <li>Oracle → Tibero 전환 대응</li>
                 </ul>
                 <div class="project-techs">
                     <span class="mini-badge">KG이니시스 통합인증</span>
@@ -433,16 +452,6 @@
 
             <div class="project-item">
                 <div class="project-header">
-                    <h3 class="project-title">인천e음몰</h3>
-                    <div class="project-period">2020.10 ~ 2020.11</div>
-                </div>
-                <ul class="project-bullets">
-                    <li>오픈을 위한 어드민 사이트ID 분리</li>
-                </ul>
-            </div>
-
-            <div class="project-item">
-                <div class="project-header">
                     <h3 class="project-title">미마켓</h3>
                     <div class="project-period">2019.07 ~ 2019.12</div>
                 </div>
@@ -482,10 +491,16 @@
                 <ul class="project-bullets">
                     <li>ISMS 대응으로 우리원마켓 SSO CI값 암호화, 평문 CI 제거</li>
                     <li>암·복호화 전담 KMS 서비스 개발 및 최종 적용</li>
+                    <li>Nginx 뒤에 KMS 인스턴스 2개를 두는 포트 이중화 구성, 한 인스턴스가 응답하지 못하면 다른 인스턴스로 자동 재시도</li>
+                    <li>systemd 템플릿 유닛으로 서비스 등록, 같은 서버의 운영·개발 환경을 포트로 분리하고 허용 IP만 접근하도록 제한</li>
+                    <li>롤링 배포 스크립트 작성: 인스턴스를 하나씩 트래픽에서 빼고 새 버전으로 재시작한 뒤 헬스체크를 통과하면 다시 투입해 무중단 배포</li>
                 </ul>
                 <div class="project-techs">
                     <span class="mini-badge">KMS</span>
                     <span class="mini-badge">ISMS</span>
+                    <span class="mini-badge">Nginx</span>
+                    <span class="mini-badge">systemd</span>
+                    <span class="mini-badge">무중단 배포</span>
                 </div>
             </div>
             <div class="project-item">
